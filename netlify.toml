@@ -1,0 +1,36 @@
+[build]
+  publish = "."
+
+# Non-CSP security headers apply everywhere, including /admin.
+# These are safe to share across paths (values never conflict).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=()"
+
+# Strict CSP for the public-facing pages only (no eval, no third-party
+# scripts). Scoped to specific files — NOT "/*" — so it never overlaps
+# with the /admin/* rule below. Netlify merges headers when two rules
+# match the same path, and two different Content-Security-Policy values
+# get enforced together (intersection), which is what broke /admin
+# before: the strict "/*" policy was still being applied on top of it.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; frame-ancestors 'none'"
+
+[[headers]]
+  for = "/checkout.html"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; frame-ancestors 'none'"
+
+# Decap CMS (served from unpkg) needs 'unsafe-eval' and 'unsafe-inline'
+# to run, plus access to Netlify Identity / Git Gateway endpoints.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://unpkg.com; connect-src 'self' https://api.netlify.com https://*.netlify.app https://unpkg.com; worker-src 'self' blob:; frame-ancestors 'none'"

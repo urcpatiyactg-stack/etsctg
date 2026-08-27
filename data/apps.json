@@ -1,0 +1,34 @@
+{
+  "apps": [
+    {
+      "order": 1,
+      "name": "Habit Tracker",
+      "description": "A minimal daily habit tracker with streaks, reminders, and a weekly summary view.",
+      "url": "https://example.com",
+      "screenshot": "",
+      "tags": ["web", "productivity"],
+      "forSale": true,
+      "price": 500
+    },
+    {
+      "order": 2,
+      "name": "Recipe Box",
+      "description": "Save, tag, and search your own recipes with photos and a shopping-list generator.",
+      "url": "https://example.com",
+      "screenshot": "",
+      "tags": ["web", "food"],
+      "forSale": false,
+      "price": 0
+    },
+    {
+      "order": 3,
+      "name": "Expense Log",
+      "description": "A lightweight expense tracker with monthly charts and category breakdowns.",
+      "url": "https://example.com",
+      "screenshot": "",
+      "tags": ["web", "finance"],
+      "forSale": true,
+      "price": 750
+    }
+  ]
+}

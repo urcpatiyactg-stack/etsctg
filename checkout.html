@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — App Shelf</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="dotgroup" aria-hidden="true">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+      </span>
+      <span class="brand-text">app<em>shelf</em></span>
+    </a>
+    <nav class="topnav">
+      <a href="index.html">← Back to shelf</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap checkout-wrap">
+
+  <div class="winbar mini checkout-titlebar">
+    <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+    <span class="wintitle">checkout.app</span>
+  </div>
+
+  <div class="checkout-box">
+
+    <div id="product-summary" class="product-summary">
+      <p class="muted-label">You're buying</p>
+      <h1 id="product-name">Loading…</h1>
+      <p id="product-price" class="product-price"></p>
+    </div>
+
+    <div id="payment-note" class="payment-note"></div>
+
+    <div id="payment-tabs" class="payment-tabs" role="tablist" aria-label="Choose a payment method"></div>
+    <div id="payment-detail" class="payment-detail"></div>
+
+    <!-- Real, static form so Netlify's build-time crawler detects it.
+         JS below submits it via fetch (AJAX) and shows a success state
+         without leaving the page. -->
+    <form
+      id="order-form"
+      class="order-form"
+      name="order"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="order" />
+      <p class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+      <input type="hidden" name="product" id="field-product" />
+      <input type="hidden" name="price" id="field-price" />
+      <input type="hidden" name="payment_method" id="field-method" value="bKash" />
+
+      <label class="field">
+        <span>Your name</span>
+        <input type="text" name="name" required>
+      </label>
+      <label class="field">
+        <span>Phone number</span>
+        <input type="tel" name="phone" required placeholder="01XXXXXXXXX">
+      </label>
+      <label class="field">
+        <span>Email (app link will be sent here)</span>
+        <input type="email" name="email" required>
+      </label>
+      <label class="field">
+        <span>Transaction ID (TrxID)</span>
+        <input type="text" name="transaction_id" required placeholder="e.g. 9G7H2K1XYZ">
+      </label>
+
+      <button type="submit" class="btn-primary full-width">Submit order</button>
+    </form>
+
+    <div id="success-state" class="success-state" hidden>
+      <div class="winbar mini"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="wintitle">order_received.log</span></div>
+      <div class="success-body">
+        <p class="success-title">Order submitted ✓</p>
+        <p>আপনার অর্ডার জমা হয়েছে। আমি Transaction ID মিলিয়ে ভেরিফাই করে ২৪ ঘণ্টার মধ্যে আপনার ইমেইলে অ্যাপ পাঠিয়ে দেব।</p>
+        <a href="index.html" class="btn-primary">Back to shelf</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer wrap">
+  <span>Payments are verified manually — this is not an automated gateway.</span>
+</footer>
+
+<script src="js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Shelf — My Builds</title>
+<meta name="description" content="A shelf of apps I've built — click any window to open it.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="#top" class="brand">
+      <span class="dotgroup" aria-hidden="true">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+      </span>
+      <span class="brand-text">app<em>shelf</em></span>
+    </a>
+    <nav class="topnav">
+      <a href="#shelf">Apps</a>
+      <a href="#about">About</a>
+      <a href="admin/" class="admin-link" title="Admin login">Admin ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">// personal build log</p>
+      <h1>Every app I've<br>shipped, on one<br>shelf.</h1>
+      <p class="lede">A running collection of things I've built — side projects, tools, and experiments. Click any window below to open the live app in a new tab.</p>
+      <a href="#shelf" class="btn-primary">Browse the shelf<span class="arrow">↓</span></a>
+    </div>
+    <div class="hero-stack" aria-hidden="true">
+      <div class="stackwin sw-1">
+        <div class="winbar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+        <div class="winbody sw-body-1"></div>
+      </div>
+      <div class="stackwin sw-2">
+        <div class="winbar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+        <div class="winbody sw-body-2"></div>
+      </div>
+      <div class="stackwin sw-3">
+        <div class="winbar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+        <div class="winbody sw-body-3"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shelf" class="shelf-section wrap">
+    <div class="section-head">
+      <h2><span class="dotgroup small" aria-hidden="true"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></span> Open windows</h2>
+      <div class="filters" id="filters" role="tablist" aria-label="Filter by tag"></div>
+    </div>
+
+    <div id="grid" class="grid" aria-live="polite"></div>
+    <p id="empty-state" class="empty-state" hidden>No apps here yet — add one from the <a href="admin/">admin panel</a>.</p>
+  </section>
+
+  <section id="about" class="about-section wrap">
+    <div class="winbar mini"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="wintitle">about.txt</span></div>
+    <div class="about-body">
+      <p>This shelf updates whenever I ship something new. Every card is a live window into a real, working app — no mockups. Have a look around, and if something breaks, that's probably version 0.1.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer wrap">
+  <span>Built with plain HTML, CSS &amp; JS. Content managed through the <a href="admin/">admin panel</a>.</span>
+  <span id="year"></span>
+</footer>
+
+<template id="card-template">
+  <article class="card">
+    <div class="winbar">
+      <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+      <span class="wintitle"></span>
+    </div>
+    <div class="thumb">
+      <img loading="lazy" alt="">
+    </div>
+    <div class="cardbody">
+      <div class="cardtitle-row">
+        <h3 class="cardtitle"></h3>
+        <span class="price-tag"></span>
+      </div>
+      <p class="carddesc"></p>
+      <div class="cardtags"></div>
+      <div class="cardactions">
+        <a class="cardlink" target="_blank" rel="noopener noreferrer">Open app <span class="arrow">↗</span></a>
+        <a class="buy-btn">Buy now</a>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script src="js/app.js"></script>
+</body>
+</html>

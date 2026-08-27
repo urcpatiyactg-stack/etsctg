@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "apps"
+    label: "Apps"
+    files:
+      - name: "apps"
+        label: "App Shelf"
+        file: "data/apps.json"
+        fields:
+          - label: "Apps"
+            name: "apps"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Order", name: "order", widget: "number", default: 1, hint: "Lower numbers show first." }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "App URL", name: "url", widget: "string", hint: "Opens in a new tab when someone clicks the card." }
+              - { label: "Screenshot", name: "screenshot", widget: "image", required: false, choose_url: false }
+              - { label: "Tags", name: "tags", widget: "list", required: false, hint: "e.g. web, mobile, game" }
+              - { label: "For sale?", name: "forSale", widget: "boolean", default: false, hint: "Turn on to show a price and Buy button on this card." }
+              - { label: "Price (৳)", name: "price", widget: "number", default: 0, required: false }
+
+  - name: "payment"
+    label: "Payment settings"
+    files:
+      - name: "payment"
+        label: "Payment methods"
+        file: "data/payment.json"
+        fields:
+          - { label: "Currency symbol", name: "currency", widget: "string", default: "৳" }
+          - { label: "Note shown on checkout page", name: "note", widget: "text" }
+          - label: "Payment methods"
+            name: "methods"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Method name", name: "name", widget: "string", hint: "e.g. bKash, Nagad, Rocket, Upay" }
+              - { label: "Personal number", name: "number", widget: "string" }
+              - { label: "Instructions", name: "instructions", widget: "text" }

@@ -1,0 +1,26 @@
+{
+  "currency": "৳",
+  "note": "টাকা পাঠানোর পর নিচের ফর্মে Transaction ID জমা দিন। ২৪ ঘণ্টার মধ্যে ভেরিফাই করে আপনার ইমেইলে অ্যাপ/টেমপ্লেট পাঠানো হবে।",
+  "methods": [
+    {
+      "name": "bKash",
+      "number": "01XXXXXXXXX",
+      "instructions": "bKash অ্যাপ খুলুন → Send Money (Payment নয়) → নাম্বারটি লিখুন → টাকা পাঠান → Reference ঘরে আপনার নাম লিখুন।"
+    },
+    {
+      "name": "Nagad",
+      "number": "01XXXXXXXXX",
+      "instructions": "Nagad অ্যাপ খুলুন → Send Money → নাম্বারটি লিখুন → টাকা পাঠান।"
+    },
+    {
+      "name": "Rocket",
+      "number": "01XXXXXXXXX-X",
+      "instructions": "Rocket অ্যাপ খুলুন → Send Money → নাম্বারটি লিখুন → টাকা পাঠান।"
+    },
+    {
+      "name": "Upay",
+      "number": "01XXXXXXXXX",
+      "instructions": "Upay অ্যাপ খুলুন → Send Money → নাম্বারটি লিখুন → টাকা পাঠান।"
+    }
+  ]
+}
